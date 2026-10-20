@@ -1,59 +1,120 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111e">
 <title>Carrera por el torrente sanguíneo 2.0</title>
 <style>
-:root{--bg:#09111f;--panel:#121f32;--panel2:#1b2d45;--text:#f4f7fb;--muted:#a8b8cb;--red:#ff5364;--green:#4cdaa0;--gold:#ffd166}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#19304c,var(--bg) 55%);color:var(--text);font:16px system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}button,input{font:inherit}button{border:0;border-radius:13px;padding:13px 16px;font-weight:750;cursor:pointer;background:var(--red);color:#fff}button.secondary{background:#2b405b}button.green{background:#16875c}button:disabled{opacity:.4;cursor:not-allowed}.wrap{max-width:980px;margin:auto;padding:18px}.brand{display:flex;gap:12px;align-items:center;margin:8px 0 22px}.logo{font-size:34px}.brand h1{font-size:clamp(21px,5vw,32px);margin:0}.brand p{margin:3px 0;color:var(--muted);font-size:13px}.card{background:rgba(18,31,50,.96);border:1px solid #2b405b;border-radius:20px;padding:18px;margin:14px 0;box-shadow:0 12px 32px #0002}.hidden{display:none!important}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.field{width:100%;padding:13px;border-radius:12px;border:1px solid #405570;background:#091625;color:white;margin:7px 0 12px}.actions{display:flex;flex-wrap:wrap;gap:8px}.code{font-size:30px;font-weight:900;letter-spacing:5px;color:var(--gold)}.track{position:relative;overflow:hidden;border-radius:18px;padding:18px 12px;background:repeating-linear-gradient(0deg,#602d43 0 38px,#7c4055 38px 42px);min-height:190px;border:3px solid #a95d70}.track:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 48px,#ffffff18 48px 51px);pointer-events:none}.lane{position:relative;height:39px;border-bottom:1px dashed #ffffff66}.lane:last-child{border:0}.runner{position:absolute;left:0;top:2px;font-size:27px;transition:left .8s cubic-bezier(.2,.8,.2,1);filter:drop-shadow(0 3px 2px #0006)}.laneName{position:absolute;right:4px;top:8px;font-size:11px;color:#fff9}.question{font-size:21px;font-weight:800;line-height:1.3}.options{display:grid;gap:9px;margin:14px 0}.option{text-align:left;background:#223650;border:1px solid #405570}.option.selected{outline:2px solid var(--gold)}.option.correct{background:#126345}.option.wrong{background:#803746}.statrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}.pill{background:#243852;border-radius:99px;padding:7px 11px;font-size:13px}.playerrow{display:flex;justify-content:space-between;gap:10px;padding:10px;border-bottom:1px solid #2b405b}.playerrow:last-child{border:0}.notice{padding:12px;border-radius:12px;background:#203650;margin:10px 0}.good{color:var(--green)}.bad{color:#ff9caa}.small{font-size:13px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+:root{color-scheme:dark;--bg:#07111e;--panel:#101e30;--panel2:#172a40;--line:#2c4660;--text:#f3f8ff;--muted:#a9bfd2;--red:#ff536b;--cyan:#63e5ed;--green:#55e0a1;--gold:#ffd36b}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -10%,#234968 0,#0b1b2c 44%,var(--bg) 78%);color:var(--text);font:16px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit}button{border:1px solid transparent;border-radius:13px;padding:12px 15px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#ff536b,#d9254c);color:white;box-shadow:0 5px 16px #0003;transition:transform .15s,filter .15s}button:active{transform:scale(.98)}button:disabled{opacity:.4;cursor:not-allowed;filter:grayscale(.6)}button.secondary{background:#263d55;border-color:#3a5874;box-shadow:none}button.green{background:linear-gradient(135deg,#27c990,#13815e)}button:focus-visible,input:focus-visible{outline:3px solid var(--cyan);outline-offset:2px}
+.wrap{width:min(1120px,100%);margin:auto;padding:clamp(12px,3vw,26px)}.brand{display:flex;gap:13px;align-items:center;margin:5px 0 22px}.logo{width:54px;height:54px;display:grid;place-items:center;border-radius:17px;background:linear-gradient(145deg,#ff6579,#a9153b);font-size:30px;box-shadow:0 8px 25px #e62b5340}.brand h1{font-size:clamp(21px,4.5vw,34px);line-height:1.1;margin:0;letter-spacing:-.7px}.brand p{margin:6px 0 0;color:var(--muted);font-size:14px}.eyebrow{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);font-weight:900}
+.card{background:linear-gradient(145deg,#14263aee,#0d1a2aee);border:1px solid #2a435b;border-radius:21px;padding:clamp(14px,2.8vw,22px);margin:14px 0;box-shadow:0 14px 36px #0002,inset 0 1px #ffffff08}.hidden{display:none!important}.muted{color:var(--muted)}.small{font-size:13px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:12px}.field{display:block;width:100%;padding:13px;border-radius:12px;border:1px solid #3a5670;background:#081522;color:white;margin:7px 0 13px}.actions{display:flex;flex-wrap:wrap;gap:8px}.actions button{flex:1 1 135px}.code{font-size:clamp(27px,6vw,36px);font-weight:950;letter-spacing:5px;color:var(--gold);text-shadow:0 0 22px #ffd16630}.statrow{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.pill{display:inline-flex;align-items:center;gap:6px;background:#213950;border:1px solid #36536c;border-radius:99px;padding:6px 11px;font-size:12px;font-weight:750}.section-title{margin:0;font-size:19px}.muted-copy{color:var(--muted);font-size:13px;margin:5px 0 0}
+.hero{position:relative;overflow:hidden;background:radial-gradient(ellipse at 50% 0,#244f69 0,#10283b 48%,#0a1726 100%);border-color:#365970}
+.track-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.track{position:relative;isolation:isolate;overflow:hidden;border-radius:19px;padding:15px 10px 18px;min-height:150px;background:radial-gradient(ellipse at 50% 0,#8c314b 0,#4d1c35 43%,#250f24 100%);border:2px solid #a65068;box-shadow:inset 0 8px 22px #ff9db31b,inset 0 -18px 30px #08081299,0 12px 26px #0004}
+.track:before{content:"";position:absolute;z-index:-1;inset:0;background:repeating-linear-gradient(90deg,transparent 0 42px,#ffd4df0c 42px 44px),linear-gradient(180deg,#ffb5c011,transparent 35%,#0004);pointer-events:none}
+.track:after{content:"";position:absolute;z-index:0;pointer-events:none;left:0;right:0;top:0;height:7px;background:linear-gradient(90deg,#ffb8c4,#8e344d,#ffd4df,#7e2946);box-shadow:0 2px 12px #ffb2c74d}
+.lane{position:relative;display:flex;align-items:center;height:58px;border-bottom:1px solid #ffc1d12b;padding:0 3px;overflow:hidden}
+.lane:last-child{border-bottom:0}
+.lane:before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;border-top:1px dashed #ffd9e34d}
+.lane-name{position:relative;z-index:3;max-width:37%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;font-weight:850;padding:5px 8px;border:1px solid #ffffff35;border-radius:8px;background:#130d20b8;box-shadow:0 2px 8px #0003}
+.lane-runway{position:absolute;left:0;right:0;top:0;bottom:0;pointer-events:none}
+.progress-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,#ff8aa31a,#ffb0c21f);transition:width .8s cubic-bezier(.2,.8,.2,1)}
+.runner{position:absolute;z-index:2;left:0;top:50%;width:34px;height:27px;transform:translate(-50%,-50%);transition:left .85s cubic-bezier(.18,.8,.25,1);filter:drop-shadow(0 5px 4px #080510b3)}
+.rbc{position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at 30% 22%,#ffb0a5 0,#f64c5c 24%,#c7163a 55%,#790d2c 82%,#420a20 100%);box-shadow:inset 2px 2px 4px #ffd0c580,inset -4px -5px 7px #40061dba,0 0 12px #ff445c35;transform:rotate(-12deg);animation:float 2.4s ease-in-out infinite}
+.rbc:before{content:"";position:absolute;left:23%;top:22%;width:54%;height:52%;border-radius:50%;background:radial-gradient(ellipse at 40% 30%,#9d1839,#6d0c2a 68%,#e63c54);box-shadow:inset 1px 2px 4px #3e071d,inset 0 -1px 3px #ff9b9c55}
+.rbc:after{content:"";position:absolute;left:18%;top:12%;width:36%;height:17%;border-radius:50%;background:#fff9;filter:blur(1px);transform:rotate(-20deg)}
+.runner.color-1 .rbc{filter:hue-rotate(80deg)}.runner.color-2 .rbc{filter:hue-rotate(145deg)}.runner.color-3 .rbc{filter:hue-rotate(205deg)}.runner.color-4 .rbc{filter:hue-rotate(260deg)}.runner.color-5 .rbc{filter:hue-rotate(315deg)}
+.finish{position:absolute;z-index:1;right:9px;top:0;bottom:0;width:15px;background:repeating-linear-gradient(0deg,#fff 0 7px,#172033 7px 14px);opacity:.8;box-shadow:0 0 12px #fff4}
+.finish-label{position:absolute;z-index:4;right:2px;top:2px;font-size:9px;font-weight:950;letter-spacing:1px;background:#fff;color:#182132;padding:2px 4px;border-radius:4px}
+@keyframes float{0%,100%{margin-top:0}50%{margin-top:-3px}}
+.question{font-size:clamp(19px,4vw,25px);font-weight:850;line-height:1.3;margin-top:10px}.options{display:grid;gap:9px;margin:14px 0}.option{text-align:left;background:linear-gradient(135deg,#213a52,#172b40);border:1px solid #3a5871;box-shadow:none}.option.selected{outline:2px solid var(--gold);background:#3d3b31}.option.correct{background:#126345;border-color:#55e0a1}.option.wrong{background:#803746;border-color:#ff8295}
+.playerrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 10px;border-bottom:1px solid #2b405b}.playerrow:last-child{border:0}.rank-left{display:flex;align-items:center;gap:9px;min-width:0}.rank-badge{display:grid;place-items:center;min-width:31px;height:31px;border-radius:10px;background:#233a50;font-weight:900}.rank-name{font-weight:750;overflow-wrap:anywhere}.rank-score{color:var(--gold);white-space:nowrap;font-weight:900}.notice{padding:12px;border-radius:12px;background:#203650;border:1px solid #34546e;margin:10px 0}.good{color:var(--green)}.bad{color:#ff9caa}.footer{text-align:center;color:var(--muted);font-size:12px;padding:20px 0}.live-dot{display:inline-block;width:8px;height:8px;background:var(--green);border-radius:50%;box-shadow:0 0 9px #55e0a1;margin-right:6px}.home-intro{max-width:680px}.empty-track{padding:22px 8px;text-align:center;color:#f7d6e1}
+@media(max-width:520px){.brand{align-items:flex-start}.logo{width:46px;height:46px;font-size:25px;flex-shrink:0}.lane{height:54px}.lane-name{max-width:34%;font-size:10px;padding:4px 6px}.runner{width:29px;height:23px}.track{padding-left:7px;padding-right:7px}.card{border-radius:17px}.actions button{flex:1 1 42%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
-<body><main class="wrap">
-<header class="brand"><div class="logo">🩸🏁</div><div><h1>Carrera por el torrente sanguíneo 2.0</h1><p>Aprende biología. Responde. ¡Avanza!</p></div></header>
+<body>
+<main class="wrap">
+<header class="brand"><div class="logo" aria-hidden="true">🩸</div><div><div class="eyebrow">Videojuego educativo · Biología</div><h1>Carrera por el torrente sanguíneo <span style="color:var(--cyan)">2.0</span></h1><p>Aprende, responde y avanza por el sistema circulatorio.</p></div></header>
+
 <section id="home" class="card">
-<h2>¡Bienvenido a la carrera!</h2><p class="muted">Viaja por el sistema circulatorio y demuestra lo que sabes sobre la sangre, el corazón y los vasos sanguíneos.</p>
+<div class="home-intro"><span class="pill">🏁 MULTIJUGADOR EN TIEMPO REAL</span><h2>¡Comienza la carrera!</h2><p class="muted">Explora la sangre, el corazón y los vasos sanguíneos mientras compites con tu grupo. El profesor crea la sala y los alumnos entran con un código.</p></div>
 <div class="grid">
-<div class="card"><h3>👩‍🏫 Soy profesor</h3><label class="small" for="teacherName">Tu nombre</label><input id="teacherName" class="field" maxlength="40" placeholder="Profe Ana"><button id="createBtn" class="green">Crear sala</button></div>
-<div class="card"><h3>🧑‍🎓 Soy alumno</h3><label class="small" for="joinCode">Código de sala</label><input id="joinCode" class="field" maxlength="6" placeholder="ABC123" autocapitalize="characters"><label class="small" for="playerName">Tu nombre</label><input id="playerName" class="field" maxlength="24" placeholder="Escribe tu nombre"><button id="joinBtn">Entrar a la carrera</button></div>
-</div><p class="muted small">Esta aplicación usa un servidor compartido cuando está publicada en internet. El código de sala es temporal.</p>
+<div class="card"><h3>👩‍🏫 Soy profesor</h3><label class="small" for="teacherName">Tu nombre</label><input id="teacherName" class="field" maxlength="40" placeholder="Profe Ana" autocomplete="name"><button id="createBtn" class="green">Crear sala</button></div>
+<div class="card"><h3>🧑‍🎓 Soy alumno</h3><label class="small" for="joinCode">Código de sala</label><input id="joinCode" class="field" maxlength="6" placeholder="ABC123" autocapitalize="characters" autocomplete="off"><label class="small" for="playerName">Tu nombre</label><input id="playerName" class="field" maxlength="24" placeholder="Escribe tu nombre" autocomplete="name"><button id="joinBtn">Entrar a la carrera</button></div>
+</div><p class="muted small">La partida utiliza un servidor compartido. El código de sala es temporal.</p>
 </section>
+
 <section id="game" class="hidden">
-<div class="card"><div class="statrow"><div><div class="muted small">CÓDIGO DE SALA</div><div class="code" id="roomCode">------</div></div><div><div class="muted small">ESTADO</div><strong id="statusText">Esperando</strong></div><div><div class="muted small">PARTICIPANTES</div><strong id="playerCount">0</strong></div></div><p class="small muted">Comparte el enlace de esta página y el código con tus alumnos.</p></div>
-<div class="card"><div class="statrow"><h2>🫀 Pista compartida</h2><span class="pill" id="questionCount">Sala de espera</span></div><div class="track" id="track"></div></div>
+<div class="card"><div class="statrow"><div><div class="muted small">CÓDIGO DE SALA</div><div class="code" id="roomCode">------</div></div><div><div class="muted small">ESTADO DE LA CARRERA</div><strong id="statusText"><span class="live-dot"></span>Esperando</strong></div><div><div class="muted small">PARTICIPANTES</div><strong id="playerCount">0</strong></div></div><p class="small muted">Comparte el enlace del juego y el código con los alumnos.</p></div>
+<div class="card hero"><div class="track-head"><div><div class="eyebrow">Circuito circulatorio</div><h2 class="section-title">🫀 Pista del torrente sanguíneo</h2><p class="muted-copy">Cada carril representa a un participante.</p></div><span class="pill" id="questionCount">Sala de espera</span></div><div class="track" id="track" aria-label="Pista de carrera compartida"></div><div class="statrow" style="margin-top:10px"><span class="muted small">🔴 Avance según respuestas correctas</span><span class="muted small">🏁 Meta</span></div></div>
 <div class="grid">
-<section class="card" id="teacherControls"><h3>🎛️ Controles del profesor</h3><p class="muted small">La partida se controla desde este panel.</p><div class="actions"><button id="startBtn" class="green">▶ Iniciar</button><button id="pauseBtn" class="secondary">Ⅱ Pausar</button><button id="nextBtn" class="secondary">Siguiente pregunta →</button><button id="finishBtn" class="secondary">🏁 Finalizar</button></div><div id="hostNotice" class="notice">Cuando entre al menos un alumno, podrás iniciar.</div></section>
-<section class="card" id="playerQuestion"><h3 id="topic">Esperando al profesor</h3><div id="questionText" class="question">La pregunta aparecerá aquí cuando comience la carrera.</div><div id="options" class="options"></div><div id="feedback" aria-live="polite"></div><div id="timer" class="muted small"></div></section>
+<section class="card" id="teacherControls"><div class="eyebrow">Panel de control</div><h2 class="section-title">🎛️ Controles del profesor</h2><p class="muted-copy">Controla la partida para todo el grupo.</p><div class="actions" style="margin-top:14px"><button id="startBtn" class="green">▶ Iniciar</button><button id="pauseBtn" class="secondary">Ⅱ Pausar</button><button id="nextBtn" class="secondary">Siguiente pregunta →</button><button id="finishBtn" class="secondary">🏁 Finalizar</button></div><div id="hostNotice" class="notice">Cuando entre al menos un alumno, podrás iniciar.</div></section>
+<section class="card" id="playerQuestion"><div class="eyebrow">Reto de biología</div><h3 id="topic">Esperando al profesor</h3><div id="questionText" class="question">La pregunta aparecerá aquí cuando comience la carrera.</div><div id="options" class="options"></div><div id="feedback" aria-live="polite"></div><div id="timer" class="muted small"></div></section>
 </div>
-<section class="card"><div class="statrow"><h2>🏆 Clasificación en vivo</h2><span class="pill">Se actualiza automáticamente</span></div><div id="leaderboard"><p class="muted">Todavía no hay participantes.</p></div></section>
+<section class="card"><div class="statrow"><div><div class="eyebrow">Puntuación en vivo</div><h2 class="section-title">🏆 Clasificación</h2></div><span class="pill">Actualización automática</span></div><div id="leaderboard" style="margin-top:10px"><p class="muted">Todavía no hay participantes.</p></div></section>
 </section>
 <div id="toast" class="notice hidden" role="status"></div>
-<div class="footer">Recurso educativo · Carrera por el torrente sanguíneo 2.0</div>
+<footer class="footer">Recurso educativo · Carrera por el torrente sanguíneo 2.0</footer>
 </main>
 <script src="/socket.io/socket.io.js"></script>
 <script>
-const socket=io();let role=null,roomCode=null,selectedAnswer=null,lastQuestion=-1,currentState=null,answered=false,timerInterval=null;
+const socket=io();
+let role=null,roomCode=null,selectedAnswer=null,lastQuestion=-1,currentState=null,answered=false,timerInterval=null;
 const $=id=>document.getElementById(id);
-function show(id){$(id).classList.remove("hidden")}function hide(id){$(id).classList.add("hidden")}
+function show(id){$(id).classList.remove("hidden")}
+function hide(id){$(id).classList.add("hidden")}
 function toast(msg){$("toast").textContent=msg;show("toast");setTimeout(()=>hide("toast"),4500)}
 $("createBtn").onclick=()=>socket.emit("room:create",{teacherName:$("teacherName").value.trim()||"Profesor"});
 $("joinBtn").onclick=()=>{const code=$("joinCode").value.trim().toUpperCase(),name=$("playerName").value.trim();if(!code||!name)return toast("Escribe el código de sala y tu nombre.");socket.emit("player:join",{code,name,color:Math.floor(Math.random()*6)})};
-$("startBtn").onclick=()=>socket.emit("game:start");$("pauseBtn").onclick=()=>socket.emit("game:pause");$("nextBtn").onclick=()=>socket.emit("question:next");$("finishBtn").onclick=()=>{if(confirm("¿Finalizar la carrera para todos?"))socket.emit("game:finish")};
-socket.on("connect",()=>{});socket.on("connect_error",()=>toast("No se pudo conectar al servidor. Comprueba tu conexión e inténtalo de nuevo."));
+$("startBtn").onclick=()=>socket.emit("game:start");
+$("pauseBtn").onclick=()=>socket.emit("game:pause");
+$("nextBtn").onclick=()=>socket.emit("question:next");
+$("finishBtn").onclick=()=>{if(confirm("¿Finalizar la carrera para todos?"))socket.emit("game:finish")};
+socket.on("connect",()=>{});
+socket.on("connect_error",()=>toast("No se pudo conectar al servidor. Comprueba tu conexión e inténtalo de nuevo."));
 socket.on("room:created",d=>{role="host";roomCode=d.code;show("game");hide("home");$("roomCode").textContent=d.code;show("teacherControls");hide("playerQuestion");toast("Sala creada. Comparte el código con tus alumnos.")});
 socket.on("player:joined",d=>{role="player";roomCode=d.code;show("game");hide("home");$("roomCode").textContent=d.code;hide("teacherControls");show("playerQuestion");toast("¡Entraste a la sala "+d.code+"!")});
 socket.on("app:error",msg=>toast(msg));
 socket.on("answer:feedback",d=>{answered=true;$("feedback").innerHTML=`<div class="notice ${d.correct?"good":"bad"}"><strong>${d.correct?"¡Correcto!":"Respuesta incorrecta"}</strong><p>${escapeHtml(d.explanation)}</p><span class="small">Puntos obtenidos: ${d.gained} · Total: ${d.score}</span></div>`;[...$("options").querySelectorAll("button")].forEach((b,i)=>{b.disabled=true;if(i===d.correctIndex)b.classList.add("correct");else if(i===selectedAnswer)b.classList.add("wrong")})});
-socket.on("room:state",state=>{currentState=state;render(state)});
+socket.on("room:state",state=>{const previousStatus=currentState?currentState.status:null;currentState=state;render(state,previousStatus)});
 function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function render(s){$("roomCode").textContent=s.code;$("playerCount").textContent=s.players.length;$("statusText").textContent=({lobby:"Esperando jugadores",question:"Pregunta abierta",paused:"Pausada",results:"Resultados de ronda",finished:"Carrera finalizada"})[s.status]||s.status;
-$("startBtn").disabled=role!=="host"||s.players.length===0||!["lobby","paused"].includes(s.status);$("pauseBtn").textContent=s.status==="paused"?"▶ Reanudar":"Ⅱ Pausar";$("nextBtn").disabled=role!=="host"||!["results","question","paused"].includes(s.status);$("finishBtn").disabled=role!=="host"||s.status==="finished";
-const track=$("track");track.innerHTML="";if(!s.players.length){track.innerHTML='<p>🩸 Esperando a los corredores…</p>'}else{s.players.forEach((p,i)=>{const lane=document.createElement("div");lane.className="lane";const runner=document.createElement("span");runner.className="runner";runner.textContent="🔴";runner.style.left=`calc(${Math.min(90,p.progress)}% - 8px)`;runner.style.filter=`drop-shadow(0 2px 3px ${p.color})`;const nm=document.createElement("span");nm.className="laneName";nm.textContent=p.name;lane.append(runner,nm);track.append(lane)})}
-$("leaderboard").innerHTML=s.players.length?s.players.map((p,i)=>`<div class="playerrow"><span>${["🥇","🥈","🥉"][i]||"🔴"} ${escapeHtml(p.name)} ${p.answered&&s.status==="question"?"✓":""}</span><strong>${p.score} pts</strong></div>`).join(""):'<p class="muted">Todavía no hay participantes.</p>';
-if(s.question){if(lastQuestion!==s.question.index){lastQuestion=s.question.index;selectedAnswer=null;answered=false;$("feedback").innerHTML="";$("topic").textContent=s.question.topic;$("questionText").textContent=s.question.text;$("questionCount").textContent=`Pregunta ${s.question.index+1} de ${s.question.total}`;$("options").innerHTML="";s.question.options.forEach((opt,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+opt;b.onclick=()=>{if(answered||selectedAnswer!==null||role!=="player")return;selectedAnswer=i;b.classList.add("selected");socket.emit("answer:submit",{answer:i})};$("options").append(b)});startTimer(s.question.deadline)}
+function render(s,previousStatus){
+$("roomCode").textContent=s.code;
+$("playerCount").textContent=s.players.length;
+$("statusText").textContent=({lobby:"Esperando jugadores",question:"Pregunta abierta",paused:"Pausada",results:"Ronda completada",finished:"Carrera finalizada"})[s.status]||s.status;
+$("startBtn").disabled=role!=="host"||s.players.length===0||s.status!=="lobby";
+$("pauseBtn").textContent=s.status==="paused"?"▶ Reanudar":"Ⅱ Pausar";
+$("pauseBtn").disabled=role!=="host"||!["question","lobby","results","paused"].includes(s.status);
+$("nextBtn").disabled=role!=="host"||!["results","question","paused"].includes(s.status);
+$("finishBtn").disabled=role!=="host"||s.status==="finished";
+const track=$("track");track.innerHTML="";
+if(!s.players.length){track.innerHTML='<div class="empty-track">🩸 Esperando a los corredores…<br><span class="small">Cuando entren los alumnos, aparecerán aquí.</span></div>'}
+else{s.players.forEach((p,i)=>{
+const lane=document.createElement("div");lane.className="lane";
+const runway=document.createElement("div");runway.className="lane-runway";
+const fill=document.createElement("div");fill.className="progress-fill";fill.style.width=Math.max(0,Math.min(100,p.progress))+"%";
+const runner=document.createElement("div");const colorMap={"#ff5252":0,"#42a5f5":1,"#66bb6a":2,"#ffca28":3,"#ab47bc":4,"#26c6da":5};runner.className="runner color-"+(colorMap[p.color]??0);runner.style.left=`calc(${Math.max(2,Math.min(96,p.progress))}% )`;runner.setAttribute("aria-label",p.name+" avance "+p.progress+"%");
+const cell=document.createElement("div");cell.className="rbc";runner.append(cell);
+const name=document.createElement("span");name.className="lane-name";name.textContent=p.name;name.title=p.name;
+runway.append(fill);lane.append(runway,runner,name);
+if(i===0){const finish=document.createElement("div");finish.className="finish";const label=document.createElement("span");label.className="finish-label";label.textContent="META";lane.append(finish,label)}
+track.append(lane);
+})}
+$("leaderboard").innerHTML=s.players.length?s.players.map((p,i)=>`<div class="playerrow"><div class="rank-left"><span class="rank-badge">${["🥇","🥈","🥉"][i]||("#"+(i+1))}</span><span class="rank-name">${escapeHtml(p.name)} ${p.answered&&s.status==="question"?"✓":""}</span></div><strong class="rank-score">${p.score} pts</strong></div>`).join(""):'<p class="muted">Todavía no hay participantes.</p>';
+if(s.question){
+if(lastQuestion!==s.question.index){lastQuestion=s.question.index;selectedAnswer=null;answered=false;$("feedback").innerHTML="";$("topic").textContent=s.question.topic;$("questionText").textContent=s.question.text;$("questionCount").textContent=`Pregunta ${s.question.index+1} de ${s.question.total}`;$("options").innerHTML="";s.question.options.forEach((opt,i)=>{const b=document.createElement("button");b.className="option";b.textContent=String.fromCharCode(65+i)+". "+opt;b.onclick=()=>{if(answered||selectedAnswer!==null||role!=="player")return;selectedAnswer=i;b.classList.add("selected");socket.emit("answer:submit",{answer:i})};$("options").append(b)});startTimer(s.question.deadline)}
+if(previousStatus==="paused"&&lastQuestion===s.question.index){$("topic").textContent=s.question.topic;$("questionText").textContent=s.question.text;startTimer(s.question.deadline)}
 if(role==="host")$("hostNotice").textContent=`Pregunta ${s.question.index+1} abierta. Respuestas recibidas: ${s.players.filter(p=>p.answered).length}/${s.players.length}.`;
-}else if(s.status==="lobby"){$("topic").textContent="Esperando al profesor";$("questionText").textContent="La carrera comenzará cuando el profesor pulse Iniciar.";$("options").innerHTML="";$("questionCount").textContent="Sala de espera";$("timer").textContent="";if(role==="host")$("hostNotice").textContent=`Hay ${s.players.length} alumno(s) conectado(s). Comparte el código ${s.code}.`}
+}else if(s.status==="lobby"){$("topic").textContent="Esperando al profesor";$("questionText").textContent="La carrera comenzará cuando el profesor pulse Iniciar.";$("options").innerHTML="";$("timer").textContent="";if(role==="host")$("hostNotice").textContent=`Hay ${s.players.length} alumno(s) conectado(s). Comparte el código ${s.code}.`}
 else if(s.status==="results"||s.status==="finished"){$("topic").textContent=s.status==="finished"?"🏁 ¡Carrera terminada!":"Ronda completada";$("questionText").textContent=s.status==="finished"?"¡Buen trabajo! Revisa la clasificación final.":"El profesor puede avanzar a la siguiente pregunta.";$("options").innerHTML="";$("timer").textContent="";if(role==="host")$("hostNotice").textContent=s.status==="finished"?"Partida finalizada.":"Ronda cerrada. Pulsa Siguiente pregunta cuando quieras continuar."}
 else if(s.status==="paused"){$("topic").textContent="⏸️ Carrera pausada";$("questionText").textContent="Espera a que el profesor reanude la partida."}
 }
 function startTimer(deadline){clearInterval(timerInterval);function tick(){const left=Math.max(0,deadline-Date.now());$("timer").textContent=left?`Tiempo restante: ${Math.ceil(left/1000)} s`:"Tiempo agotado";if(!left)clearInterval(timerInterval)}tick();timerInterval=setInterval(tick,300)}
-</script></body></html>
+</script>
+</body>
+</html>
