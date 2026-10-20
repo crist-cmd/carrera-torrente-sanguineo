@@ -1,0 +1,17 @@
+{
+  "name": "carrera-torrente-sanguineo-2",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Juego educativo multijugador de biología con salas y sincronización en tiempo real.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
